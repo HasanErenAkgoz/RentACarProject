@@ -34,8 +34,7 @@ namespace WebApi.Controllers
         [HttpPost("add")]
         public IActionResult Add(CreditCard card)
         {
-            var userId = _customerService.GetById(card.UserId);
-            card.UserId = userId.Data.Id;
+          
             var result = _cardService.Add(card);
             return Ok(result);
         }
