@@ -11,7 +11,8 @@ namespace Business.Abstract
 {
     public interface IUserOperationClaimService
     {
-        IDataResult<UserOperationClaimDto> GetById(int id);
+        IDataResult<List<UserOperationClaimDto>> GetById(int id);
+        IDataResult<List<UserOperationClaimDto>> GetByUserId(int id);
 
         IDataResult<List<UserOperationClaimDto>> GetAll();
 

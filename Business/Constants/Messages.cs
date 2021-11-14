@@ -50,5 +50,9 @@ namespace Business.Constants
         public static string UserOperationClaimDeleted = "Kullanıcı Claim Silme Başarılı";
         public static string CarAdd = "Araç Ekleme İşlemi Başarılı";
         public static string CarListed = "Araç Listeleme Başarılı";
+
+        public static string UserUpdated = "Kullanıcı GÜncelleme Başarılı";
+
+        public static string PasswordChanged = "Şifre Değiştirildi";
     }
 }

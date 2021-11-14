@@ -17,13 +17,19 @@ namespace Business.Concrete
         ICarInfoDal _carInfoDal;
         IRentalDal _rentalDal;
         ICustomerInfoDal _CustomerInfo;
+        IBrandDal _brandDal;
+        IModelDal _modelDal;
+
         public StatisticsManager(ICarInfoDal carInfoDal, IRentalDal rentalDal
-            , ICustomerInfoDal customerInfoDal
+            , ICustomerInfoDal customerInfoDal,IBrandDal brandDal,
+            IModelDal modelDal
            )
         {
             _carInfoDal = carInfoDal;
             _rentalDal = rentalDal;
             _CustomerInfo = customerInfoDal;
+            _brandDal = brandDal;
+            _modelDal = modelDal;
         }
 
         public string CheapestCarPlate()
@@ -38,9 +44,9 @@ namespace Business.Concrete
             return result.ToString();
         }
 
-        public int NumberofRentedVehicles()
+        public string NumberofRentedVehicles()
         {
-            var result = _rentalDal.GetAll().Count();
+            var result = _rentalDal.GetAll().Count().ToString();
             return result;
         }
 
@@ -53,10 +59,10 @@ namespace Business.Concrete
                 {
                     Name = sales.Name,
                     Stock = sales.CarInfos.Count()
-                }).Where(x=>x.Stock>0).ToList();
+                }).Where(x => x.Stock > 0).ToList();
             }
             return snf;
-                 
+
         }
 
         public string TopSellingVehiclePlate()
@@ -66,11 +72,11 @@ namespace Business.Concrete
                      .Where(car => car.CarId == (_rentalDal.GetAll()
                     .GroupBy(sales => sales.CustomerInfoId)
                     .OrderByDescending(z => z.Count()).Select(y => y.Key).FirstOrDefault()))
-                    .Select(k => k.Plate).FirstOrDefault();
-            return result;
+                    .Select(k => k.Plate).SingleOrDefault();
+            return result.ToString();
         }
 
-        
+
 
         public int TotalNumberofCustomers()
         {
@@ -81,6 +87,24 @@ namespace Business.Concrete
         public int TotolCarCount()
         {
             var result = _carInfoDal.GetAll().Count();
+            return result;
+        }
+
+        public string TotalBrandCount()
+        {
+            var result = _brandDal.GetAll().Count().ToString();
+            return result;
+        }
+
+        public int TotalModelCount()
+        {
+            var result = _modelDal.GetAll().Count();
+            return result;
+        }
+
+        public decimal TotalMoneyEarned()
+        {
+            var result = _rentalDal.GetAll().Sum(x => x.TotalPrice);
             return result;
         }
     }

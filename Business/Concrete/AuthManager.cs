@@ -45,7 +45,7 @@ namespace Business.Concrete
             _userService.Add(user);
             var users = _userService.GetByMail(user.Email);
             _userOperationClaimService.AddUserClaim(user);
-            var newCustomer = new CustomerInfo { UserId = users.Id, PhoneNumber = $"{userForRegisterDto.PhoneNumber}",FindeksScore=userForRegisterDto.FindeksScore,Address=userForRegisterDto.Address};
+            var newCustomer = new CustomerInfo { UserId = users.Id, PhoneNumber = $"{userForRegisterDto.PhoneNumber}",FindeksScore=userForRegisterDto.FindeksScore,Address=userForRegisterDto.Address,Status=true};
             _customerService.Add(newCustomer);
             return new SuccessDataResult<User>(user, Messages.UserRegistered);
         }
@@ -84,6 +84,25 @@ namespace Business.Concrete
         public IResult IsAuthenticated(string userMail, List<string> requiredRoles)
         {
             throw new NotImplementedException();
+        }
+
+        public IResult ChangePassword(ChangePasswordDto changePasswordDto)
+        {
+            byte[] passwordHash, passwordSalt;
+            var userToCheck = _userService.GetById(changePasswordDto.UserId).Data;
+            if (userToCheck == null)
+            {
+                return new ErrorResult(Messages.UserNotFound);
+            }
+            if (!HashingHelper.VerifyPasswordHash(changePasswordDto.OldPassword, userToCheck.PasswordHash, userToCheck.PasswordSalt))
+            {
+                return new ErrorResult(Messages.PasswordError);
+            }
+            HashingHelper.CreatePasswordHash(changePasswordDto.NewPassword, out passwordHash, out passwordSalt);
+            userToCheck.PasswordHash = passwordHash;
+            userToCheck.PasswordSalt = passwordSalt;
+            _userService.Update(userToCheck);
+            return new SuccessResult(Messages.PasswordChanged);
         }
     }
 }

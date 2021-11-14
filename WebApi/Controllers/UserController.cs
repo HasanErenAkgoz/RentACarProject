@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Core.Entities.Concrete;
+using Entity.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -85,6 +86,17 @@ namespace WebApi.Controllers
             }
             return BadRequest(result);
         }
-        
+
+        [HttpPost("updateprofile")]
+        public IActionResult ProfileUpdate(userForUpdateDto userForUpdateDto)
+        {
+            var result = _userService.ProfileUpdate(userForUpdateDto.User, userForUpdateDto.Password);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
     }
 }

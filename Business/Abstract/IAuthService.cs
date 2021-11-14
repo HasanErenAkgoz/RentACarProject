@@ -15,5 +15,7 @@ namespace Business.Abstract
         IResult UserExists(string email);
         IDataResult<AccessToken> CreateAccessToken(User user);
         IResult IsAuthenticated(string userMail, List<string> requiredRoles);
+        IResult ChangePassword(ChangePasswordDto changePasswordDto);
+
     }
 }

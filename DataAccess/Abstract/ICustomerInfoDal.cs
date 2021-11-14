@@ -11,6 +11,7 @@ namespace DataAccess.Abstract
     {
         List<CustomerInfoDTO> GetCustomerDetail(Expression<Func<CustomerInfoDTO, bool>> filter = null);
         CustomerInfoDTO GetCustomerDetailId(int carId);
+        CustomerInfoDTO getCustomerUserDetailId(int UserId);
 
 
     }

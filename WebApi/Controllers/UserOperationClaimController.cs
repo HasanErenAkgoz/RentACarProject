@@ -32,6 +32,18 @@ namespace WebApi.Controllers
             else
                 return BadRequest(result);
         }
+        [HttpGet("getbyuserıd")]
+        public IActionResult GetByUserId(int id)
+        {
+            var result = _userOperationClaimService.GetByUserId(id);
+            if (result.Data != null)
+            {
+                return Ok(result);
+
+            }
+            else
+                return BadRequest(result);
+        }
         [HttpGet("getall")]
         public IActionResult GetAll()
         {

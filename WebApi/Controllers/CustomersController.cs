@@ -41,6 +41,27 @@ namespace WepAPI.Controllers
             }
             return BadRequest(result);
         }
+
+        [HttpGet("getbyıd")]
+        public IActionResult GetById(int id)
+        {
+            var result = _customerInfoServices.GetById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("getcustomeruserdetailId")]
+        public IActionResult GetCustomerUserId(int id)
+        {
+            var result = _customerInfoServices.getCustomerUserDetailId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
         //Post Operation
 
         [HttpPost("add")]

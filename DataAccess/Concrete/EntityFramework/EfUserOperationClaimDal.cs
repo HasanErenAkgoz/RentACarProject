@@ -18,7 +18,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (var context = new AkgozRentACarContext())
             {
-                var result = from userOperationClaims in context.UserOperationClaims.Where(x=>x.Id==carId)
+                var result = from userOperationClaims in context.UserOperationClaims.Where(x=>x.UserId==carId)
                              join User in context.Users
                              on userOperationClaims.UserId equals User.Id
 
@@ -65,7 +65,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  Status=userOperationClaims.Status,
 
                              };
-                return result.Where(x => x.Status == true).ToList();
+                return filter == null ? result.Where(x => x.Status == true).ToList() : result.Where(filter).Where(x => x.Status == true).ToList();
             }
         }
     }

@@ -26,7 +26,6 @@ namespace DataAccess.Concrete.EntityFramework
                                  PhoneNumber = Customer.PhoneNumber,
                                  FindeksScore = Customer.FindeksScore,
                                  Status = Customer.Status,
-
                                  FirstName = User.FirstName,
                                  LastName = User.LastName,
                                  Email = User.Email,
@@ -36,12 +35,11 @@ namespace DataAccess.Concrete.EntityFramework
                 return result.Where(x => x.Status == true).ToList();
             }
         }
-
         public CustomerInfoDTO GetCustomerDetailId(int customerId)
         {
             using (var context = new AkgozRentACarContext())
             {
-                var result = from Customer in context.CustomerInfos
+                var result = from Customer in context.CustomerInfos.Where(x => x.Id == customerId)
                              join User in context.Users
                              on Customer.UserId equals User.Id
                              select new CustomerInfoDTO
@@ -51,17 +49,39 @@ namespace DataAccess.Concrete.EntityFramework
                                  PhoneNumber = Customer.PhoneNumber,
                                  FindeksScore = Customer.FindeksScore,
                                  Status = Customer.Status,
-
+                                 UserId = Customer.UserId,
                                  FirstName = User.FirstName,
                                  LastName = User.LastName,
                                  Email = User.Email,
 
                              };
-                return result.FirstOrDefault();
+                return result.SingleOrDefault();
 
             }
         }
 
+        public CustomerInfoDTO getCustomerUserDetailId(int UserId)
+        {
+            using (var context = new AkgozRentACarContext())
+            {
+                var result = from Customer in context.CustomerInfos.Where(x => x.UserId == UserId)
+                             join User in context.Users
+                             on Customer.UserId equals User.Id
+                             select new CustomerInfoDTO
+                             {
+                                 Id = Customer.Id,
+                                 Address = Customer.Address,
+                                 PhoneNumber = Customer.PhoneNumber,
+                                 FindeksScore = Customer.FindeksScore,
+                                 Status = Customer.Status,
+                                 UserId = Customer.UserId,
+                                 FirstName = User.FirstName,
+                                 LastName = User.LastName,
+                                 Email = User.Email,
 
+                             };
+                return result.SingleOrDefault();
+            }
+        }
     }
 }

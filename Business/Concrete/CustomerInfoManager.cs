@@ -48,6 +48,13 @@ namespace Business.Concrete
             throw new System.NotImplementedException();
         }
 
+ 
+
+        public IDataResult<CustomerInfoDTO> getCustomerUserDetailId(int Id)
+        {
+            return new SuccessDataResult<CustomerInfoDTO>(_customerInfoDal.getCustomerUserDetailId(Id), Messages.ItemsListed);
+        }
+
         public IResult Update(CustomerInfo customer)
         {
             

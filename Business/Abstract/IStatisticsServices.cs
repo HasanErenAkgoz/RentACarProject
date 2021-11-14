@@ -7,14 +7,18 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-   public interface IStatisticsServices
+    public interface IStatisticsServices
     {
         public int TotolCarCount();
+        public string TotalBrandCount();
+        public int TotalModelCount();
+        public decimal TotalMoneyEarned();
         public string MostExpensiveCarPlate();
         public string CheapestCarPlate();
         public string TopSellingVehiclePlate();
         public int TotalNumberofCustomers();
-        public int NumberofRentedVehicles();
+        public string NumberofRentedVehicles();
+
         public List<NameStock> NameStock();
 
 

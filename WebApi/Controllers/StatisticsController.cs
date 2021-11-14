@@ -41,11 +41,9 @@ namespace WebApi.Controllers
         public IActionResult TopSellingVehiclePlate()
         {
             var result = _statisticsServices.TopSellingVehiclePlate();
-            if (result != "")
-            {
-                return Ok(result.ToString());
-            }
-            return BadRequest(result);
+
+                return Ok(result);
+           
         }
         [HttpGet("cheapestcarplate")]
         public IActionResult CheapestCarPlate()
@@ -59,7 +57,7 @@ namespace WebApi.Controllers
         public IActionResult NumberofRentedVehicles()
         {
             var result = _statisticsServices.NumberofRentedVehicles();
-            if (result != 0)
+            if (result!=null)
             {
                 return Ok(result);
             }
@@ -69,7 +67,7 @@ namespace WebApi.Controllers
         public IActionResult TotalNumberofCustomers()
         {
             var result = _statisticsServices.TotalNumberofCustomers();
-            if (result != 0)
+            if (result >0)
             {
                 return Ok(result);
             }
@@ -86,6 +84,41 @@ namespace WebApi.Controllers
                 return Ok(result);
             }
             return BadRequest("Hata");
+        }
+        [HttpGet("totalbrandcount")]
+        public IActionResult TotalBrandCount()
+        {
+            var result = _statisticsServices.TotalBrandCount();
+            if (result!=null )
+            {
+                return Ok(result);
+            }
+            else
+             return BadRequest(result);
+        }
+
+        [HttpGet("totalmoneyearned")]
+        public IActionResult TotalMoneyEarned()
+        {
+            var result = _statisticsServices.TotalMoneyEarned();
+            if (result >0)
+            {
+                return Ok(result);
+            }
+            else
+                return BadRequest(result);
+        }
+
+        [HttpGet("totalmodelcount")]
+        public IActionResult TotalModelCount()
+        {
+            var result = _statisticsServices.TotalModelCount();
+            if (result >0)
+            {
+                return Ok(result);
+            }
+            else
+                return BadRequest(result);
         }
 
     }

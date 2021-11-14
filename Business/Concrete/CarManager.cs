@@ -76,7 +76,7 @@ namespace Business.Concrete
         public IDataResult<List<CarDetailDTO>> GetCarDetailDto()
         {
 
-            return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetCarDetails(),Messages.ItemsListed);
+            return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetCarDetails(), Messages.ItemsListed);
 
         }
 
@@ -117,18 +117,14 @@ namespace Business.Concrete
         {
             return new DataResult<List<CarInfo>>(_carDal.GetAll(cid => cid.Plate == plate), true, Messages.ItemsListed);
         }
-
         public IDataResult<List<CarInfo>> GetCarsDetailModelId(int id)
         {
             throw new NotImplementedException();
         }
-
         public IDataResult<List<CarDetailDTO>> GetCarDetailcarId(int carId)
         {
             return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetCarDetails(x => x.CarId == carId), Messages.ItemsListed);
         }
-
-
         public IResult AddTransactionalTest(CarInfo carInfo)
         {
             throw new NotImplementedException();
