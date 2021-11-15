@@ -45,7 +45,7 @@ System.IdentityModel.Tokens.Jwt Version="6.8.0"
 ```
 
 <br>
-### Install
+### Database Install
 
 Step 1: download the project files
 
@@ -60,5 +60,16 @@ Step 5: Type "Update-database".
 <h3>Congratulations You have completed the database installation process :)</h3>
 
 
+### Veritabanı Yükleme
 
+Adım 1: proje dosyalarını indirin
 
+Adım 2: "DataAccess.Concrete.Entity Framework" yolunu takip ederek veritabanı bağlantısını kendi bilgisayarınıza göre yollayın ve düzenleyin.
+
+Adım 3: Package Manager Console'nu Açın
+
+Adım 4: "add-migration migName" yazın.
+
+Adım 5: "Update-database" yazın.
+
+Tebrikler Veritabanı yükleme işlemini tamamladınız :)
