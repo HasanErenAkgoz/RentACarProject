@@ -58,7 +58,7 @@ Step 4: Type "add-migration migName".
 Step 5: Type "Update-database".
 
 <h3>Congratulations You have completed the database installation process :)</h3>
-
+<br>
 
 ### Veritabanı Yükleme
 
@@ -72,4 +72,4 @@ Adım 4: "add-migration migName" yazın.
 
 Adım 5: "Update-database" yazın.
 
-Tebrikler Veritabanı yükleme işlemini tamamladınız :)
+<h3>Tebrikler Veritabanı yükleme işlemini tamamladınız :) </h3>
