@@ -44,7 +44,32 @@ Microsoft.IdentityModel.Tokens Version="6.8.0"
 System.IdentityModel.Tokens.Jwt Version="6.8.0"
 ```
 
+<br>
+### Database Install
 
+Step 1: download the project files
 
+Step 2: Go to the "Data Access.Concrete.Entity Framework" path and edit the database connection according to your own computer.
+
+Step 3: Open Package Manager Console 
+
+Step 4: Type "add-migration migName". 
+
+Step 5: Type "Update-database".
+
+<h3>Congratulations You have completed the database installation process :)</h3>
 <br>
 
+### Veritabanı Yükleme
+
+Adım 1: proje dosyalarını indirin
+
+Adım 2: "DataAccess.Concrete.Entity Framework" yolunu takip ederek veritabanı bağlantısını kendi bilgisayarınıza göre yollayın ve düzenleyin.
+
+Adım 3: Package Manager Console'nu Açın
+
+Adım 4: "add-migration migName" yazın.
+
+Adım 5: "Update-database" yazın.
+
+<h3>Tebrikler Veritabanı yükleme işlemini tamamladınız :) </h3>
