@@ -46,7 +46,7 @@ namespace WepAPI
                         options.TokenValidationParameters = new TokenValidationParameters
                         {
                             ValidateIssuer = true,
-                            ValidateAudience = true,
+                            ValidateAudience = true, 
                             ValidateLifetime = true,
                             ValidIssuer = tokenOptions.Issuer,
                             ValidAudience = tokenOptions.Audience,
@@ -60,7 +60,6 @@ namespace WepAPI
             );
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

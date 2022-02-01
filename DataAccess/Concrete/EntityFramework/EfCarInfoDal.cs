@@ -34,6 +34,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  MotorHp = cars.MotorHp,
                                  DailyPrice = cars.DailyPrice,
                                  Color = cars.Color,
+                                 GearType = cars.GearType,
+                                 FuelType=cars.FuelType,
                                  ImagePath = (from ci in context.CarImages where ci.CarInfoId == carId select ci.ImagePath).ToList(),
                                  MinFindeksScore = cars.MinFindeksScore,
 
@@ -68,6 +70,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  MotorHp = cars.MotorHp,
                                  DailyPrice=cars.DailyPrice,
                                  Color = cars.Color,
+                                 GearType=cars.GearType,
+                                 FuelType = cars.FuelType,
                                  ImagePath = (from ci in context.CarImages where ci.CarInfoId == cars.CarId select ci.ImagePath).ToList(),
                                  MinFindeksScore = cars.MinFindeksScore,
 

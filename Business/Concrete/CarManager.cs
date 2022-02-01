@@ -70,7 +70,7 @@ namespace Business.Concrete
         {
             return new DataResult<CarInfo>(_carDal.Get(cid => cid.CarId == id), true, Messages.ItemsListed);
         }
-
+    
 
         [CacheAspect]
         public IDataResult<List<CarDetailDTO>> GetCarDetailDto()

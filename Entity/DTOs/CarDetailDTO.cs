@@ -20,6 +20,8 @@ namespace Entities.DTOs
         public Decimal DailyPrice { get; set; }
         public List<string> ImagePath { get; set; }
         public int MinFindeksScore { get; set; }
+        public string GearType { get; set; }
+        public string FuelType { get; set; }
 
         public bool Status { get; set; }
     }

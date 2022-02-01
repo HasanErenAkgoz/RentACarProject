@@ -127,6 +127,12 @@ namespace DataAccess.Migrations
                     b.Property<DateTime?>("ReturnDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("plate")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CarInfoId");
@@ -191,6 +197,14 @@ namespace DataAccess.Migrations
 
                     b.Property<decimal>("DailyPrice")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("FuelType")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("GearType")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("Km")
                         .HasMaxLength(10)
@@ -287,24 +301,6 @@ namespace DataAccess.Migrations
                     b.ToTable("CustomerInfos");
                 });
 
-            modelBuilder.Entity("Entity.Concrate.ExpensesInfo", b =>
-                {
-                    b.Property<int>("ExpensesId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ExpenseName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("ExpensesId");
-
-                    b.ToTable("Expenses");
-                });
-
             modelBuilder.Entity("Entity.Concrate.Model", b =>
                 {
                     b.Property<int>("ModelId")
@@ -347,6 +343,9 @@ namespace DataAccess.Migrations
 
                     b.Property<DateTime?>("ReturnDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 

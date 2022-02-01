@@ -28,6 +28,11 @@ namespace Entity.Concrate
         public string MotorHp { get; set; }
         [StringLength(15)]
         public string Color { get; set; }
+        [StringLength(30)]
+        public string GearType { get; set; }
+
+        [StringLength(30)]
+        public string FuelType { get; set; }
         public Decimal DailyPrice { get; set; }
         public int MinFindeksScore { get; set; }
         public bool Status { get; set; }

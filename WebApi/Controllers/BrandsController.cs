@@ -13,7 +13,7 @@ namespace WepAPI.Controllers
     [ApiController]
     public class BrandsController : ControllerBase
     {
-        IBrandServices _brandServices;
+          IBrandServices _brandServices;
         public BrandsController(IBrandServices brandServices)
         {
             _brandServices = brandServices;

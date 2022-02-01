@@ -42,7 +42,6 @@ namespace Business.Concrete
         {
             operationClaim.Status = true;
             _operationClaimDal.Add(operationClaim);
-
             return new SuccessResult(Messages.OperationClaimAdded);
         }
 

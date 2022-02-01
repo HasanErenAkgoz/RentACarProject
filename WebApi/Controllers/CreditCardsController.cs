@@ -47,10 +47,10 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("getallbyid")]
-        public IActionResult GetAllById(int customerId)
+        public IActionResult GetAllById(int userId)
         {
          
-            var result = _cardService.GetAll(customerId);
+            var result = _cardService.GetAll(userId);
             if (result.Success)
             {
                 return Ok(result);
